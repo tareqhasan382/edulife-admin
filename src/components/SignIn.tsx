@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.jpg";
 import { useLoginMutation } from "../Redux/auth/authApi";
 import { useState } from "react";
@@ -98,14 +98,14 @@ const SignIn: React.FC = () => {
             >
               {isLoading ? "Logging in..." : "Sign In"}
             </button>
-            <div>
+            {/* <div>
               <h1>
                 New User ? Please{" "}
                 <Link to="/sign-up" className=" text-blue-600 underline ">
                   Sign Up{" "}
                 </Link>
               </h1>
-            </div>
+            </div> */}
           </form>
           {isError && (
             <p className="text-red-500 mt-2">Login failed. Please try again.</p>
