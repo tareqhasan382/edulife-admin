@@ -1,6 +1,20 @@
 import { baseApi } from "../api/baseApi";
 import { userLoggedIn } from "./authSlice";
 import { jwtDecode } from "jwt-decode";
+export interface UserResponse {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+  role: string;
+}
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+  role: string;
+}
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation({
@@ -45,7 +59,28 @@ export const authApi = baseApi.injectEndpoints({
         }
       },
     }),
+
+    allUser: builder.query({
+      query: () => ({
+        url: "/auth/users",
+        method: "GET",
+      }),
+      providesTags: ["auth"],
+    }),
+    updateUser: builder.mutation<User, { id: string; data: Partial<User> }>({
+      query: ({ id, data }) => ({
+        url: `/auth/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["auth"],
+    }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation } = authApi;
+export const {
+  useLoginMutation,
+  useSignupMutation,
+  useAllUserQuery,
+  useUpdateUserMutation,
+} = authApi;

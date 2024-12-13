@@ -1,20 +1,19 @@
+import { useState } from "react";
+import { FaRegEdit } from "react-icons/fa";
 import { IoTrashSharp } from "react-icons/io5";
 import {
-  LessonResponse,
-  useDeleteLessonMutation,
-  useLessonsQuery,
-} from "../Redux/lesson/lessonApi";
-import { FaRegEdit } from "react-icons/fa";
-import { useState } from "react";
+  useAllVocabolaryQuery,
+  useDeleteVocabularyMutation,
+  VocabularyResponse,
+} from "../Redux/vocabulary/vocabularyApi";
 import { Link } from "react-router-dom";
-
-import { toast } from "react-toastify";
 type QueryParams = {
   limit: number;
   page: number;
   filterField?: string;
 };
-const Lesson = () => {
+const Vocabulary = () => {
+  const [deleteVocabulary] = useDeleteVocabularyMutation();
   const [limit] = useState<number>(40);
   const [page] = useState<number>(1);
 
@@ -22,29 +21,16 @@ const Lesson = () => {
     limit,
     page,
   };
-  const { data } = useLessonsQuery(query);
-  const [deleteLesson] = useDeleteLessonMutation();
-  const handleDelete = async (id: string) => {
-    try {
-      const result = await deleteLesson(id);
-      if (result.error) {
-        toast.error("deleting Faled");
-      } else {
-        toast.success("successful deletion");
-      }
-    } catch (error) {
-      toast.error("deleting Faled");
-      console.error("Unexpected error:", error);
-    }
-  };
+  const { data } = useAllVocabolaryQuery(query);
+
   return (
     <div className="w-full h-auto bg-[#FDF8EE]">
       <div className="p-2 w-full h-full flex flex-col items-start">
         <div className=" w-full flex items-center  gap-10 ">
-          <h1 className="text-2xl font-bold">Lesson</h1>
-          <Link to="add-lesson">
+          <h1 className="text-2xl font-bold">Vocabulary</h1>
+          <Link to="add-vocabulary">
             <button className=" px-3 py-1 rounded-lg bg-black text-white font-semibold text-sm ">
-              Add Lesson
+              Add Vocabulary
             </button>
           </Link>
         </div>
@@ -54,24 +40,26 @@ const Lesson = () => {
           <div className="w-full overflow-x-auto flex flex-col gap-6">
             <div className="w-full grid grid-cols-5 items-center gap-6 min-w-[800px]">
               <h1>Number </h1>
-              <h1>Name </h1>
+              <h1>Word </h1>
 
-              <h1 className=" px-2 ">vocabularyCount </h1>
+              <h1 className=" px-2 ">Pronunciation </h1>
+              <h1>Meaning </h1>
               <h1>Action </h1>
             </div>
-            {data?.data.map((user: LessonResponse) => (
+            {data?.data.map((vocabulary: VocabularyResponse) => (
               <div
-                key={user._id}
+                key={vocabulary._id}
                 className="w-full grid grid-cols-5 items-center gap-6 min-w-[800px]"
               >
-                <h1>{user?.number} </h1>
-                <h1>{user?.name} </h1>
+                <h1>{vocabulary?.lessonNo} </h1>
+                <h1>{vocabulary?.word} </h1>
+                <h1>{vocabulary?.pronunciation} </h1>
 
-                <h1 className=" px-2 ">{user?.vocabularyCount} </h1>
+                <h1 className=" px-2 ">{vocabulary?.meaning} </h1>
 
                 {/* Individual role selection for each user */}
                 <div className="flex items-center gap-3">
-                  <button onClick={() => handleDelete(user?._id)}>
+                  <button onClick={() => deleteVocabulary(vocabulary._id)}>
                     <IoTrashSharp />
                   </button>
                   <button>
@@ -87,4 +75,4 @@ const Lesson = () => {
   );
 };
 
-export default Lesson;
+export default Vocabulary;

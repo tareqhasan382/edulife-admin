@@ -1,6 +1,5 @@
 import {
   ArrowLeft,
-  UsersRound,
   LayoutDashboard,
   BookA,
   Shirt,
@@ -26,7 +25,7 @@ const Sidebar = () => {
   const [open, setOpen] = useState<boolean>(true);
   return (
     <div
-      className={`relative h-full bg-gray-800 text-white p-5 pt-8 duration-300 ${
+      className={`relative h-full bg-black text-white p-5 pt-8 duration-300 ${
         open ? "w-72" : "w-20"
       } `}
     >
@@ -62,20 +61,8 @@ const Sidebar = () => {
             </h1>
           </div>
         </Link>
-        <Link to="/user">
-          <div className=" items-center  my-2">
-            <UsersRound className=" bg-white text-4xl rounded cursor-pointer block float-left mr-2 p-1 " />
-            <h1
-              className={` text-white origin-left font-medium text-xl duration-300 ${
-                !open && "scale-0"
-              } `}
-            >
-              Users
-            </h1>
-          </div>
-        </Link>
 
-        <Link to="/order">
+        <Link to="/lesson">
           <div className=" items-center  my-2">
             <BookA className=" bg-white text-4xl rounded cursor-pointer block float-left mr-2 p-1 " />
             <h1
@@ -83,11 +70,11 @@ const Sidebar = () => {
                 !open && "scale-0"
               } `}
             >
-              Order
+              Lesson
             </h1>
           </div>
         </Link>
-        <Link to="/product">
+        <Link to="/vocabulary">
           <div className=" items-center  my-2">
             <Shirt className=" bg-white text-4xl rounded cursor-pointer block float-left mr-2 p-1 " />
             <h1
@@ -95,11 +82,11 @@ const Sidebar = () => {
                 !open && "scale-0"
               } `}
             >
-              Product
+              Vocabulary
             </h1>
           </div>
         </Link>
-        <Link to="/banner">
+        <Link to="/tutorial">
           <div className=" items-center  my-2">
             <Images className=" bg-white text-4xl rounded cursor-pointer block float-left mr-2 p-1 " />
             <h1
@@ -107,7 +94,7 @@ const Sidebar = () => {
                 !open && "scale-0"
               } `}
             >
-              Banner
+              Tutorial
             </h1>
           </div>
         </Link>

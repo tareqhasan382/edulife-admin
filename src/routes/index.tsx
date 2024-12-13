@@ -7,6 +7,10 @@ import Tutorial from "../components/Tutorial";
 import SignUp from "../components/SignUp";
 import SignIn from "../components/SignIn";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Vocabulary from "../components/Vocabulary";
+import AddVocabulary from "../components/AddVocabulary";
+import AddLesson from "../components/AddLesson";
+import AddTutorial from "../components/AddTutorial";
 
 const routes = createBrowserRouter([
   {
@@ -30,10 +34,42 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/tutorila",
+        path: "/lesson/add-lesson",
+        element: (
+          <ProtectedRoute>
+            <AddLesson />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/vocabulary",
+        element: (
+          <ProtectedRoute>
+            <Vocabulary />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/vocabulary/add-vocabulary",
+        element: (
+          <ProtectedRoute>
+            <AddVocabulary />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/tutorial",
         element: (
           <ProtectedRoute>
             <Tutorial />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/tutorial/add-tutorial",
+        element: (
+          <ProtectedRoute>
+            <AddTutorial />
           </ProtectedRoute>
         ),
       },
