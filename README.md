@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+# ~日本~ Learn: Japanese Vocabulary Learning Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive and intuitive application to help users expand their Japanese vocabulary and improve communication skills. Designed for both users and admins, this app features secure authentication, seamless navigation, and engaging learning experiences.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### User Features
 
-## Expanding the ESLint configuration
+- **Navbar and Footer:** Easy navigation with a responsive layout.
+- **Lessons Page:** Access to protected lessons categorized by topics.
+- **Vocabulary Learning:**
+  - Displays individual vocabulary words with information.
+  - Pronunciation playback on click.
+  - Pagination for smooth navigation.
+  - Completion with an interactive confetti animation.
+- **Tutorial Page:** Embedded YouTube videos for supplementary learning.
+- **Authentication:** Secure login and registration with validations.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Admin Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Dashboard:** Centralized control panel for managing the system.
+- **Lesson Management:**
+  - Create, view, edit, and delete lessons.
+  - Track vocabulary count for each lesson.
+- **Vocabulary Management:**
+  - Add, view, edit, and delete vocabulary.
+  - Filter vocabularies by lesson number.
+- **User Management:**
+  - View all users with their roles.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Authentication & Authorization
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Custom authentication system.
+- Role-based access control with protected routes.
+  - Redirect normal users to the lessons page upon login.
+  - Redirect admins to the dashboard upon login.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Learning System
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Engaging vocabulary learning experience with audio playback.
+- Interactive celebration upon lesson completion.
+
+## Tech Stack
+
+### Frontend
+
+- **React**: UI Development
+- **TypeScript**: Strong typing for better code quality
+- **React Router**: Client-side routing
+- **Tailwind CSS**: Styling
+- **React-Confetti**: Animation for completion events
+
+### Backend
+
+- **Node.js**: Runtime environment
+- **Express.js**: Backend framework
+- **TypeScript**: Strong typing for better maintainability
+
+### Database
+
+- **MongoDB**: Data storage
+- **Mongoose**: ODM for MongoDB
+
+## Installation and Setup
+
+### Prerequisites
+
+- Node.js and npm installed.
+- MongoDB instance running.
