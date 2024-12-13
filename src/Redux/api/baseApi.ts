@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-export const BASEURL = "http://localhost:8000/api/v1/";
+export const BASEURL = "https://edulife-backend.vercel.app/api/v1/"; //"http://localhost:8000/api/v1/";
 
 export const baseApi = createApi({
   reducerPath: "api",
