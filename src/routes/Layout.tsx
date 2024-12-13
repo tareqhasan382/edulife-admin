@@ -8,7 +8,7 @@ const Layout = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/login";
   const auth = useAppSelector((state: RootState) => state.auth);
-  if (!auth?.user) {
+  if (auth?.user?.role !== "admin") {
     return <SignIn />;
   }
   return (
